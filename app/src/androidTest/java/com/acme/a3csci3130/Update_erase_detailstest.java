@@ -40,6 +40,7 @@ public class Update_erase_detailstest {
     String province = "NS";
 
     @Test public void test(){
+        // testcase pre-condition: delete all contacts in firebase database.
         createtest();
         updatetest();
         deletetest();
@@ -47,21 +48,21 @@ public class Update_erase_detailstest {
 
     public void createtest(){
 
-        onView(withId(R.id.submitButton)).perform(click());
-        onView(withId(R.id.name)).perform(typeText(name1),closeSoftKeyboard());
+        onView(withId(R.id.submitButton)).perform(click()); // -> clicks on Create Contact button in MainActivity
+        onView(withId(R.id.name)).perform(typeText(name1),closeSoftKeyboard()); // types the data in respective fields
         onView(withId(R.id.email)).perform(typeText(email),closeSoftKeyboard());
         onView(withId(R.id.number)).perform(typeText(number),closeSoftKeyboard());
         onView(withId(R.id.business)).perform(typeText(business),closeSoftKeyboard());
         onView(withId(R.id.address)).perform(typeText(address),closeSoftKeyboard());
         onView(withId(R.id.province)).perform(typeText(province),closeSoftKeyboard());
-        onView(withId(R.id.submitButton)).perform(click());
+        onView(withId(R.id.submitButton)).perform(click());// -> clicks on Create Contact button in CreateContactActivity
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).check(matches(withText(name1)));
     }
     public void readtest(){
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
-        onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click());
-        onView(withId(R.id.name)).check(matches(withText(name1)));
+        onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click());// Clicks on the first contact created in the listview in MainActivity
+        onView(withId(R.id.name)).check(matches(withText(name1))); // below test step verifies the read text from firebase
         onView(withId(R.id.email)).check(matches(withText(email)));
         onView(withId(R.id.number)).check(matches(withText(number)));
         onView(withId(R.id.address)).check(matches(withText(address)));
@@ -71,13 +72,13 @@ public class Update_erase_detailstest {
 
     public void updatetest() {
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click());
-        onView(withId(R.id.name)).perform(replaceText(name2), closeSoftKeyboard());
+        onView(withId(R.id.name)).perform(replaceText(name2), closeSoftKeyboard());// updates the name field in the CreateContactActivity.
         onView(withId(R.id.updateButton)).perform(click());
-        onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).check(matches(withText(name2)));
+        onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).check(matches(withText(name2)));//verifies the update by tapping the listview first contact name in MainActivity
     }
     public void deletetest() {
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click());
-        onView(withId(R.id.deleteButton)).perform(click());
-        onView(withId(R.id.listView)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.deleteButton)).perform(click()); // Clicks on the delete button
+        onView(withId(R.id.listView)).check(matches(not(isDisplayed())));// verifies whether delete is proper
     }
 }
