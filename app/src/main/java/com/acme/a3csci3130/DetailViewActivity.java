@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class DetailViewActivity extends Activity {
 
-    private EditText nameField, emailField, numberField, businessField, addressField, provinceField;;
+    private EditText nameField, numberField, businessField, addressField, provinceField;;
     Contact receivedPersonInfo;
     private MyApplicationData appState;
 
@@ -20,7 +20,6 @@ public class DetailViewActivity extends Activity {
         receivedPersonInfo = (Contact)getIntent().getSerializableExtra("Contact");
         appState = ((MyApplicationData) getApplicationContext());
         nameField = (EditText) findViewById(R.id.name);
-        emailField = (EditText) findViewById(R.id.email);
         numberField = (EditText) findViewById(R.id.number);
         businessField = (EditText) findViewById(R.id.business);
         addressField = (EditText) findViewById(R.id.address);
@@ -28,7 +27,6 @@ public class DetailViewActivity extends Activity {
 
         if(receivedPersonInfo != null){
             nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.email);
             numberField.setText(receivedPersonInfo.number);
             businessField.setText(receivedPersonInfo.business);
             addressField.setText(receivedPersonInfo.address);
@@ -43,7 +41,6 @@ public class DetailViewActivity extends Activity {
     public void updateContact(View v){
         //TODO: Update contact funcionality
         receivedPersonInfo.name = String.valueOf(nameField.getText());
-        receivedPersonInfo.email = String.valueOf(emailField.getText());
         receivedPersonInfo.number = String.valueOf(numberField.getText());
         receivedPersonInfo.address = String.valueOf(addressField.getText());
         receivedPersonInfo.province = String.valueOf(provinceField.getText());

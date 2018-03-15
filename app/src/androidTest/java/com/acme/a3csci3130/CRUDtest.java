@@ -28,7 +28,6 @@ public class CRUDtest {
     @Rule public ActivityTestRule<MainActivity> activityActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
     String name1 = "test1";
     String name2 = "testupdate";
-    String email = "test1@gmail.com";
     String number = "9879";
     String address = "No:5, South Park Street, Halifax";
     String business = "Fisher";
@@ -51,7 +50,6 @@ public class CRUDtest {
 
         onView(withId(R.id.submitButton)).perform(click()); // -> clicks on Create Contact button in MainActivity
         onView(withId(R.id.name)).perform(typeText(name1),closeSoftKeyboard()); // types the data in respective fields
-        onView(withId(R.id.email)).perform(typeText(email),closeSoftKeyboard());
         onView(withId(R.id.number)).perform(typeText(number),closeSoftKeyboard());
         onView(withId(R.id.business)).perform(typeText(business),closeSoftKeyboard());
         onView(withId(R.id.address)).perform(typeText(address),closeSoftKeyboard());
@@ -65,7 +63,6 @@ public class CRUDtest {
         onView(withId(R.id.listView)).check(matches(isDisplayed()));
         onData(anything()).inAdapterView(withId(R.id.listView)).atPosition(0).perform(click());// Clicks on the first contact created in the listview in MainActivity
         onView(withId(R.id.name)).check(matches(withText(name1))); // below test step verifies the read text from firebase
-        onView(withId(R.id.email)).check(matches(withText(email)));
         onView(withId(R.id.number)).check(matches(withText(number)));
         onView(withId(R.id.address)).check(matches(withText(address)));
         onView(withId(R.id.business)).check(matches(withText(business)));
