@@ -36,6 +36,10 @@ public class DetailViewActivity extends Activity {
         }
     }
 
+    /**
+     *
+     * @param v  view for the update contact button
+     */
     public void updateContact(View v){
         //TODO: Update contact funcionality
         receivedPersonInfo.name = String.valueOf(nameField.getText());
@@ -48,6 +52,10 @@ public class DetailViewActivity extends Activity {
         finish();
     }
 
+    /**
+     *
+     * @param v for the erase contact button
+     */
     public void eraseContact(View v) {
         //TODO: Erase contact functionality
         appState.firebaseReference.child(receivedPersonInfo.uid).removeValue();

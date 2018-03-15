@@ -33,7 +33,7 @@ public class CRUDtest {
     String address = "No:5, South Park Street, Halifax";
     String business = "Fisher";
     String province = "NS";
-    /** Test() functions implements the test case in order 1. createtest 2. updatetest 3.delete test
+    /** Test() functions implements the test case in order 1. createtest 2. read test 3. updatetest 4.delete test
      * {@link CRUDtest#createtest()}-> creates the new contact with name as test 1
      * {@link CRUDtest#readtest()} -> read the test 1 contact and verifies with the entered data
      * {@link CRUDtest#updatetest()} ()} -> updates the "test1" contact name as "testupdate" and verifies it*
